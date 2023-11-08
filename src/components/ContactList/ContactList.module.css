@@ -1,10 +1,11 @@
 .contactList {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 15px;
   list-style: none;
   border: 1px solid black;
-  width: 300px;
+  width: 500px;
   padding: 16px;
 }
 .contactItem {
@@ -12,9 +13,16 @@
   justify-content: space-between;
   border: 1px solid black;
   padding: 8px;
+  gap: 5px;
 }
 
 .btn {
-  width: 60px;
+  width: 70px;
   cursor: pointer;
+  margin-right: 5px;
+}
+
+.container {
+  width: 1000;
+  margin-top: 50px;
 }

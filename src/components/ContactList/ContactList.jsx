@@ -1,10 +1,11 @@
-import css from './ContactList.module.css';
 import { selectorFilteredProducts } from 'store/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact, getAllContacts } from 'store/thunks';
+import { getAllContacts } from 'store/thunks';
 import { useEffect } from 'react';
+import { Grid } from '@mui/material';
+import ContactListItem from 'components/ContactListItem/ContactListItem';
 
-export const ContactList = () => {
+const ContactList = () => {
   const contacts = useSelector(selectorFilteredProducts);
   const dispatch = useDispatch();
 
@@ -13,22 +14,23 @@ export const ContactList = () => {
   }, [dispatch, contacts]);
 
   return (
-    <ul className={css.contactList}>
-      {contacts &&
-        contacts.map(({ id, name, phone }) => {
-          return (
-            <li key={id} className={css.contactItem}>
-              {name}: {phone}
-              <button
-                type="button"
-                className={css.btn}
-                onClick={() => dispatch(deleteContact(id))}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
-    </ul>
+    <div className="container">
+      <Grid
+        container
+        spacing={{ xs: 3, md: 2 }}
+        columns={{ xs: 2, sm: 8, md: 12 }}
+        justifyContent="center"
+        alignItems="center"
+      >
+        {contacts &&
+          contacts.map(contact => (
+            <Grid item xs={2} sm={4} md={4} key={contact.id} maxWidth={100}>
+              <ContactListItem key={contact.id} contact={contact} />
+            </Grid>
+          ))}
+      </Grid>
+    </div>
   );
 };
+
+export default ContactList;

@@ -3,6 +3,7 @@ import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'store/thunks';
 import { selectorFilteredProducts } from 'store/selectors';
+import { Alert } from '@mui/material';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -15,16 +16,16 @@ const ContactForm = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const phone = form.number.value;
+    const number = form.number.value;
     if (
       contacts.find(
         ({ name: nameCont }) => nameCont.toLowerCase() === name.toLowerCase()
       )
     ) {
-      alert(`${name} is already in contacts.`);
+      <Alert severity="error">`${name} is already in contacts.`</Alert>;
       return;
     }
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
   };
 
   return (

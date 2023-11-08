@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import { addContact, getAllContacts, deleteContact } from './thunks';
+import {
+  addContact,
+  getAllContacts,
+  deleteContact,
+  updateContactThunk,
+} from './thunks';
 import {
   handleFulfilledAll,
   handleFulfilledAdd,
   handleFulfilledDelete,
+  updateFulfilledAll,
 } from './helpers';
 
 export const phoneSlice = createSlice({
@@ -19,7 +25,8 @@ export const phoneSlice = createSlice({
     builder
       .addCase(getAllContacts.fulfilled, handleFulfilledAll)
       .addCase(addContact.fulfilled, handleFulfilledAdd)
-      .addCase(deleteContact.fulfilled, handleFulfilledDelete);
+      .addCase(deleteContact.fulfilled, handleFulfilledDelete)
+      .addCase(updateContactThunk.fulfilled, updateFulfilledAll);
   },
 });
 
