@@ -1,17 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initialState } from './initialState';
 import {
   addContact,
   getAllContacts,
   deleteContact,
   updateContactThunk,
-} from './thunks';
+} from './contactsThunks';
 import {
   handleFulfilledAll,
   handleFulfilledAdd,
   handleFulfilledDelete,
   updateFulfilledAll,
-} from './helpers';
+} from './contactsHelpers';
+
+const initialState = {
+  contacts: null,
+  filter: '',
+};
 
 export const phoneSlice = createSlice({
   name: 'contact',

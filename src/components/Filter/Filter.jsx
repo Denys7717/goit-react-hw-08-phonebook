@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import css from './Filter.module.css';
-import { filterContact } from 'store/slice';
+import { filterContact } from 'store/contacts/contactsSlice';
 import { useDispatch } from 'react-redux';
 
 const Filter = () => {

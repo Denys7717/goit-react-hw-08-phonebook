@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { authSelector } from '../../store/auth/selector';
-import { logoutThunk } from 'store/auth/thunks';
+import { authSelector } from '../../store/auth/authSelector';
+import { logoutThunk } from 'store/auth/authThunks';
 import { deleteToken } from '../../api/auth';
+import { profileSelector } from '../../store/auth/authSelector';
 
 const Header = () => {
   const navigate = useNavigate();
   const isAuth = useSelector(authSelector);
   const dispatch = useDispatch();
+  const profile = useSelector(profileSelector);
 
   const handleClick = () => {
     if (isAuth) {
@@ -26,6 +28,14 @@ const Header = () => {
           Contacts
         </Link>
         <div className="ms-5">
+          <NavLink
+            className="navbar-brand mb-0 h1 text-success"
+            to={isAuth ? '/' : 'Registration'}
+          >
+            <button className="btn btn-outline-success ms-5">
+              {isAuth ? profile?.name : 'Registration'}
+            </button>
+          </NavLink>
           <button
             onClick={handleClick}
             className="btn btn-outline-success ms-5"

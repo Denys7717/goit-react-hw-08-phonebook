@@ -12,14 +12,20 @@ export const registrationThunk = createAsyncThunk(
     }
   }
 );
+
 export const refreshThunk = createAsyncThunk(
-  'users/current',
-  async (_, { rejectWithValue }) => {
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
     try {
-      const data = await refresh();
+      const data = await refresh(persistedToken);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

@@ -23,7 +23,6 @@ export const updateContactThunk = createAsyncThunk(
   'users/updateContact',
   async (body, { rejectWithValue }) => {
     try {
-      console.log(body);
       const data = await updateContact(body);
       return data;
     } catch (error) {

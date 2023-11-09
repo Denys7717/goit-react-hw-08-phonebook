@@ -1,6 +1,6 @@
-import { reducerPhone } from './slice';
-import { appReducer } from './appState/slice';
-import { authReducer } from './auth/slice';
+import { reducerPhone } from './contacts/contactsSlice';
+import { appReducer } from './appState/appSlice';
+import { authReducer } from './auth/authSlice';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 

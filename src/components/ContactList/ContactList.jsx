@@ -1,9 +1,9 @@
-import { selectorFilteredProducts } from 'store/selectors';
+import { selectorFilteredProducts } from 'store/contacts/contactsSelectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllContacts } from 'store/thunks';
+import { getAllContacts } from 'store/contacts/contactsThunks';
 import { useEffect } from 'react';
 import { Grid } from '@mui/material';
-import ContactListItem from 'components/ContactListItem/ContactListItem';
+import ContactListItem from 'components/ContactList/ContactListItem/ContactListItem';
 
 const ContactList = () => {
   const contacts = useSelector(selectorFilteredProducts);

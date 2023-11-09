@@ -1,6 +1,6 @@
 import FormLogin from 'components/Forms/FormLogin/FormLogin';
 import { useDispatch } from 'react-redux';
-import { loginThunk } from 'store/auth/thunks';
+import { loginThunk } from 'store/auth/authThunks';
 import toast from 'react-hot-toast';
 
 const Login = () => {

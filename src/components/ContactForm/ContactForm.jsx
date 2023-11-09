@@ -1,9 +1,8 @@
 import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'store/thunks';
-import { selectorFilteredProducts } from 'store/selectors';
-import { Alert } from '@mui/material';
+import { addContact } from 'store/contacts/contactsThunks';
+import { selectorFilteredProducts } from 'store/contacts/contactsSelectors';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -22,10 +21,11 @@ const ContactForm = () => {
         ({ name: nameCont }) => nameCont.toLowerCase() === name.toLowerCase()
       )
     ) {
-      <Alert severity="error">`${name} is already in contacts.`</Alert>;
+      alert(`${name} is already in contacts.`);
       return;
     }
     dispatch(addContact({ name, number }));
+    form.reset();
   };
 
   return (

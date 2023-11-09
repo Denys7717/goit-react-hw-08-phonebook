@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { handleFulfilled, handlePending, handleRejected } from './helpers';
+import { handleFulfilled, handlePending, handleRejected } from './appHelpers';
 
 const initialState = {
   isLoading: false,

@@ -1,10 +1,16 @@
 import { useSelector } from 'react-redux';
-import { selectorAppState } from 'store/appState/selectors';
+import { selectorAppState } from 'store/appState/appSelectors';
 
 const Loader = () => {
   const { isLoading } = useSelector(selectorAppState);
 
-  return isLoading && <h1>Loading...</h1>;
+  return (
+    isLoading && (
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    )
+  );
 };
 
 export default Loader;

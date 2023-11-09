@@ -1,6 +1,6 @@
 import FormRegistration from 'components/Forms/FormRegistration/FormRegistration';
 import { useDispatch } from 'react-redux';
-import { registrationThunk } from 'store/auth/thunks';
+import { registrationThunk } from 'store/auth/authThunks';
 
 const Registration = () => {
   const dispatch = useDispatch();

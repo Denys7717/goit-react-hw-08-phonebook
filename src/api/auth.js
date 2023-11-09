@@ -7,7 +7,7 @@ const setToken = token => {
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const deleteToken = () => {
-  delete axios.defaults.headers.common['Authorization'];
+  axios.defaults.headers.common.Authorization = '';
 };
 
 export const signUp = async body => {
@@ -16,9 +16,8 @@ export const signUp = async body => {
   return data;
 };
 
-export const refresh = async () => {
-  const token = JSON.parse(localStorage.getItem('persist:auth'));
-  setToken(JSON.parse(token?.token));
+export const refresh = async token => {
+  setToken(token);
   const { data } = await axios('users/current');
   return data;
 };
