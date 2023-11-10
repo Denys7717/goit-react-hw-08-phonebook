@@ -19,7 +19,7 @@ const Home = () => {
         }}
       >
         {isAuth
-          ? `Hello ${profile.name}`
+          ? `Hello ${profile?.name}`
           : 'Your phone book might be here. Try it!'}
       </div>
     </>
