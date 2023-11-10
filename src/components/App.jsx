@@ -1,11 +1,13 @@
 import Loader from './Loader/Loader';
 import { Toaster } from 'react-hot-toast';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout/Layout';
 import PrivateRoute from 'guards/PrivateRoute/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute/PublicRoute';
 import NotFound from './NotFound/NotFound';
+import { refreshThunk } from 'store/auth/authThunks';
+import { useDispatch } from 'react-redux';
 
 const Login = lazy(() => import('../pages/Login/Login'));
 const Registration = lazy(() => import('../pages/Registration/Registration'));
@@ -13,6 +15,12 @@ const ContactPage = lazy(() => import('../pages/ContactPage/ContactPage'));
 const Home = lazy(() => import('../pages/Home/Home'));
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
   return (
     <>
       <Loader />
